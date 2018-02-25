@@ -9,9 +9,19 @@ export class AppComponent {
   title = 'app';
   noweZadanie: string;
   listaZadan: Array<string> = [];
+  zrobioneZadania: Array<string> = [];
 
-  dodaj(){
+  dodaj() {
     this.listaZadan.push(this.noweZadanie);
-    console.log(this.listaZadan);
+    this.noweZadanie = '';
+  }
+
+  usun(zadanie: string) {
+    this.listaZadan = this.listaZadan.filter(e => e !== zadanie);
+  }
+
+  zrobione(zadanie: string) {
+    this.zrobioneZadania.push(zadanie);
+    this.usun(zadanie);
   }
 }
