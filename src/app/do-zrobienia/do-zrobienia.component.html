@@ -1,0 +1,12 @@
+<ng-container *ngIf="listaZadan.length > 0; else brakZadan">
+  <ul>
+    <li *ngFor="let zadanie of listaZadan">
+      {{zadanie}}
+      <button (click)="usun(zadanie)">Usuń</button>
+      <button (click)="zrobione(zadanie)">Zrobione!</button>
+    </li>
+  </ul>
+</ng-container>
+<ng-template #brakZadan>
+  <p>Brak zadań do wykonania!</p>
+</ng-template>

@@ -1,35 +1,16 @@
 <div>
   <div class="container">
-    <div>
-      <input [(ngModel)]="noweZadanie">
-      <button (click)="dodaj()">Dodaj Zadanie</button>
-    </div>
+    <app-dodaj-zadanie (emitZadanie)="dodaj($event)"></app-dodaj-zadanie>
   </div>
 
   <div class="container">
 
     <div>
-      <ng-container *ngIf="listaZadan.length > 0; else brakZadan">
-        <ul>
-          <li *ngFor="let zadanie of listaZadan">
-            {{zadanie}}
-            <button (click)="usun(zadanie)">Usuń</button>
-            <button (click)="zrobione(zadanie)">Zrobione!</button>
-          </li>
-        </ul>
-      </ng-container>
-      <ng-template #brakZadan>
-        <p>Brak zadań do wykonania!</p>
-      </ng-template>
+      <app-do-zrobienia [listaZadan]="listaZadan" (emitZrobione)="zrobione($event)" (emitUsun)="usun($event)"></app-do-zrobienia>
     </div>
 
     <div>
-      <p>Wykonane zadania: {{zrobioneZadania.length}}</p>
-      <ul>
-        <li *ngFor="let zadanie of zrobioneZadania">
-          {{zadanie}}
-        </li>
-      </ul>
+      <app-zrobione-zadania [zrobioneZadania]="zrobioneZadania"></app-zrobione-zadania>
     </div>
 
   </div>

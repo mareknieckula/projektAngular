@@ -7,13 +7,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
-  noweZadanie: string;
   listaZadan: Array<string> = [];
   zrobioneZadania: Array<string> = [];
 
-  dodaj() {
-    this.listaZadan.push(this.noweZadanie);
-    this.noweZadanie = '';
+  dodaj(zadanie: string) {
+    this.listaZadan.push(zadanie);
   }
 
   usun(zadanie: string) {

@@ -4,11 +4,17 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
+import { DodajZadanieComponent } from './dodaj-zadanie/dodaj-zadanie.component';
+import { DoZrobieniaComponent } from './do-zrobienia/do-zrobienia.component';
+import { ZrobioneZadaniaComponent } from './zrobione-zadania/zrobione-zadania.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    DodajZadanieComponent,
+    DoZrobieniaComponent,
+    ZrobioneZadaniaComponent
   ],
   imports: [
     BrowserModule,
