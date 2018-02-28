@@ -26,4 +26,8 @@ export class DoZrobieniaComponent implements OnInit {
     this.emitZrobione.emit(zadanie);
   }
 
+  getColor(): string {
+    return this.listaZadan.length >= 5 ? 'red' : 'green';
+  }
+
 }

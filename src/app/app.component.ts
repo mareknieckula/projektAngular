@@ -1,14 +1,20 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
+
+
   title = 'app';
   listaZadan: Array<string> = [];
   zrobioneZadania: Array<string> = [];
+
+  ngOnInit(): void {
+    this.listaZadan = ['Zakupy', 'Trening', 'Fryzjer', 'Projekt na zaliczenie'];
+  }
 
   dodaj(zadanie: string) {
     this.listaZadan.push(zadanie);
