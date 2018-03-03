@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { ZadaniaService } from '../services/zadania.service';
 
 @Component({
   selector: 'app-dodaj-zadanie',
@@ -8,16 +9,14 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 export class DodajZadanieComponent implements OnInit {
 
   noweZadanie: string;
-  @Output()
-  emitZadanie = new EventEmitter<string>();
 
-  constructor() { }
+  constructor(private zadaniaService: ZadaniaService) { }
 
   ngOnInit() {
   }
 
   dodaj() {
-    this.emitZadanie.emit(this.noweZadanie);
+    this.zadaniaService.dodaj(this.noweZadanie);
     this.noweZadanie = '';
   }
 

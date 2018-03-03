@@ -1,4 +1,5 @@
-import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output, ViewEncapsulation } from '@angular/core';
+import { ZadaniaService } from '../services/zadania.service';
 
 @Component({
   selector: 'app-do-zrobienia',
@@ -7,23 +8,22 @@ import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 })
 export class DoZrobieniaComponent implements OnInit {
 
-  @Input()
   listaZadan = [];
-  @Output()
-  emitZrobione = new EventEmitter<string>();
-  @Output()
-  emitUsun = new EventEmitter<string>();
 
-  constructor() { }
+  constructor(private zadaniaService: ZadaniaService) {
+    this.zadaniaService.getListaZadanObs().subscribe((zadania: Array<string>) => {
+      this.listaZadan = zadania;
+    });
+  }
 
   ngOnInit() {
   }
   usun(zadanie: string) {
-    this.emitUsun.emit(zadanie);
+    this.zadaniaService.usun(zadanie);
   }
 
   zrobione(zadanie: string) {
-    this.emitZrobione.emit(zadanie);
+    this.zadaniaService.zrobione(zadanie);
   }
 
   getColor(): string {

@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { ZadaniaService } from '../services/zadania.service';
 
 @Component({
   selector: 'app-zrobione-zadania',
@@ -7,9 +8,12 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class ZrobioneZadaniaComponent implements OnInit {
 
-  @Input()
   zrobioneZadania: Array<string> = [];
-  constructor() { }
+  constructor(private zadaniaService: ZadaniaService) {
+    this.zadaniaService.getZrobioneZadaniaObs().subscribe((zadania: Array<string>) => {
+      this.zrobioneZadania = zadania;
+    });
+  }
 
   ngOnInit() {
   }

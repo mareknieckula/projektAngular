@@ -7,6 +7,7 @@ import { FormsModule } from '@angular/forms';
 import { DodajZadanieComponent } from './dodaj-zadanie/dodaj-zadanie.component';
 import { DoZrobieniaComponent } from './do-zrobienia/do-zrobienia.component';
 import { ZrobioneZadaniaComponent } from './zrobione-zadania/zrobione-zadania.component';
+import { ZadaniaService } from './services/zadania.service';
 
 
 @NgModule({
@@ -21,7 +22,7 @@ import { ZrobioneZadaniaComponent } from './zrobione-zadania/zrobione-zadania.co
     FormsModule
 
   ],
-  providers: [],
+  providers: [ZadaniaService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -3,8 +3,8 @@
   <ul>
     <li *ngFor="let zadanie of listaZadan; let odd = odd"[ngClass]="{'odd-li': odd === true, 'last-li': listaZadan.length===1}">
       {{zadanie}}
-      <button (click)="usun(zadanie)">Usuń</button>
-      <button (click)="zrobione(zadanie)">Zrobione!</button>
+      <button type="button" class="btn btn-danger" (click)="usun(zadanie)">Usuń</button>
+      <button type="button" class="btn btn-success" (click)="zrobione(zadanie)">Zrobione!</button>
     </li>
   </ul>
 </ng-container>

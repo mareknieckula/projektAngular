@@ -1,16 +1,16 @@
 <div>
   <div class="container">
-    <app-dodaj-zadanie (emitZadanie)="dodaj($event)"></app-dodaj-zadanie>
+    <app-dodaj-zadanie></app-dodaj-zadanie>
   </div>
 
   <div class="container">
 
     <div>
-      <app-do-zrobienia [listaZadan]="listaZadan" (emitZrobione)="zrobione($event)" (emitUsun)="usun($event)"></app-do-zrobienia>
+      <app-do-zrobienia></app-do-zrobienia>
     </div>
 
     <div>
-      <app-zrobione-zadania [zrobioneZadania]="zrobioneZadania"></app-zrobione-zadania>
+      <app-zrobione-zadania></app-zrobione-zadania>
     </div>
 
   </div>
