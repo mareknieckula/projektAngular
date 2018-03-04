@@ -1,41 +1,46 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
+import { Zadanie } from '../models/zadanie';
 
 @Injectable()
 export class ZadaniaService {
 
-  private listaZadan: Array<string> = [];
-  private zrobioneZadania: Array<string> = [];
+  private listaZadan: Array<Zadanie> = [];
+  private zrobioneZadania: Array<Zadanie> = [];
 
-  private listaZadanObs = new BehaviorSubject<Array<string>>(this.listaZadan);
-  private zrobioneZadaniaObs = new BehaviorSubject<Array<string>>(this.listaZadan);
+  private listaZadanObs = new BehaviorSubject<Array<Zadanie>>([]);
+  private zrobioneZadaniaObs = new BehaviorSubject<Array<Zadanie>>([]);
  constructor() {
-    this.listaZadan = ['Zakupy', 'Trening', 'Fryzjer', 'Projekt na zaliczenie'];
+    this.listaZadan = [
+      {name: 'Zakupy', created: new Date()},
+      {name: 'Trening', created: new Date()},
+      {name: 'Fryzjer', created: new Date()},
+      {name: 'Projekt na zaliczenie', created: new Date()}];
     this.listaZadanObs.next(this.listaZadan);
   }
 
-  dodaj(zadanie: string) {
+  dodaj(zadanie: Zadanie) {
     this.listaZadan.push(zadanie);
     this.listaZadanObs.next(this.listaZadan);
   }
 
-  usun(zadanie: string) {
+  usun(zadanie: Zadanie) {
     this.listaZadan = this.listaZadan.filter(e => e !== zadanie);
     this.listaZadanObs.next(this.listaZadan);
   }
 
-  zrobione(zadanie: string) {
+  zrobione(zadanie: Zadanie) {
     this.zrobioneZadania.push(zadanie);
     this.usun(zadanie);
     this.zrobioneZadaniaObs.next(this.zrobioneZadania);
   }
 
-  getListaZadanObs(): Observable<Array<string>> {
+  getListaZadanObs(): Observable<Array<Zadanie>> {
     return this.listaZadanObs.asObservable();
   }
 
-  getZrobioneZadaniaObs(): Observable<Array<string>> {
+  getZrobioneZadaniaObs(): Observable<Array<Zadanie>> {
     return this.zrobioneZadaniaObs.asObservable();
   }
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { ZadaniaService } from '../services/zadania.service';
+import { Zadanie } from '../models/zadanie';
 
 @Component({
   selector: 'app-dodaj-zadanie',
@@ -16,7 +17,8 @@ export class DodajZadanieComponent implements OnInit {
   }
 
   dodaj() {
-    this.zadaniaService.dodaj(this.noweZadanie);
+    const zadanie: Zadanie = ({ name: this.noweZadanie, created: new Date() });
+    this.zadaniaService.dodaj(zadanie);
     this.noweZadanie = '';
   }
 

@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, EventEmitter, Output, ViewEncapsulation } from '@angular/core';
 import { ZadaniaService } from '../services/zadania.service';
+import { Zadanie } from '../models/zadanie';
 
 @Component({
   selector: 'app-do-zrobienia',
@@ -8,21 +9,22 @@ import { ZadaniaService } from '../services/zadania.service';
 })
 export class DoZrobieniaComponent implements OnInit {
 
-  listaZadan = [];
+  listaZadan: Array<Zadanie> = [];
 
   constructor(private zadaniaService: ZadaniaService) {
-    this.zadaniaService.getListaZadanObs().subscribe((zadania: Array<string>) => {
+    this.zadaniaService.getListaZadanObs().subscribe((zadania: Array<Zadanie>) => {
       this.listaZadan = zadania;
     });
   }
 
   ngOnInit() {
   }
-  usun(zadanie: string) {
+  usun(zadanie: Zadanie) {
     this.zadaniaService.usun(zadanie);
   }
 
-  zrobione(zadanie: string) {
+  zrobione(zadanie: Zadanie) {
+    zadanie.end = new Date();
     this.zadaniaService.zrobione(zadanie);
   }
 

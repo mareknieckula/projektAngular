@@ -8,6 +8,8 @@ import { DodajZadanieComponent } from './dodaj-zadanie/dodaj-zadanie.component';
 import { DoZrobieniaComponent } from './do-zrobienia/do-zrobienia.component';
 import { ZrobioneZadaniaComponent } from './zrobione-zadania/zrobione-zadania.component';
 import { ZadaniaService } from './services/zadania.service';
+import { CheckedDirective } from './shared/checked.directive';
+import { DateDirective } from './shared/date.directive';
 
 
 @NgModule({
@@ -15,7 +17,9 @@ import { ZadaniaService } from './services/zadania.service';
     AppComponent,
     DodajZadanieComponent,
     DoZrobieniaComponent,
-    ZrobioneZadaniaComponent
+    ZrobioneZadaniaComponent,
+    CheckedDirective,
+    DateDirective
   ],
   imports: [
     BrowserModule,
