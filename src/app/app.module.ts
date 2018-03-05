@@ -10,6 +10,8 @@ import { ZrobioneZadaniaComponent } from './zrobione-zadania/zrobione-zadania.co
 import { ZadaniaService } from './services/zadania.service';
 import { CheckedDirective } from './shared/checked.directive';
 import { DateDirective } from './shared/date.directive';
+import { TransformZadaniePipe } from './shared/transform-zadanie.pipe';
+import { SortNamePipe } from './shared/sort-name.pipe';
 
 
 @NgModule({
@@ -19,7 +21,9 @@ import { DateDirective } from './shared/date.directive';
     DoZrobieniaComponent,
     ZrobioneZadaniaComponent,
     CheckedDirective,
-    DateDirective
+    DateDirective,
+    TransformZadaniePipe,
+    SortNamePipe
   ],
   imports: [
     BrowserModule,

@@ -13,7 +13,7 @@ export class DoZrobieniaComponent implements OnInit {
 
   constructor(private zadaniaService: ZadaniaService) {
     this.zadaniaService.getListaZadanObs().subscribe((zadania: Array<Zadanie>) => {
-      this.listaZadan = zadania;
+      this.listaZadan = zadania.slice();
     });
   }
 
