@@ -1,5 +1,7 @@
 export interface Zadanie {
+  _id?: {$oid: string};
   name: string;
-  created: Date;
-  end?: Date;
+  created: string;
+  end?: string;
+  isDone: boolean;
 }

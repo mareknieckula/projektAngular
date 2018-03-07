@@ -2,45 +2,43 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
 import { Zadanie } from '../models/zadanie';
+import { HttpService } from './http.service';
 
 @Injectable()
 export class ZadaniaService {
 
-  private listaZadan: Array<Zadanie> = [];
-  private zrobioneZadania: Array<Zadanie> = [];
-
   private listaZadanObs = new BehaviorSubject<Array<Zadanie>>([]);
-  private zrobioneZadaniaObs = new BehaviorSubject<Array<Zadanie>>([]);
- constructor() {
-    this.listaZadan = [
-      {name: 'Zakupy', created: new Date()},
-      {name: 'Trening', created: new Date()},
-      {name: 'Fryzjer', created: new Date()},
-      {name: 'Projekt na zaliczenie', created: new Date()}];
-    this.listaZadanObs.next(this.listaZadan);
+
+  constructor(private httpService: HttpService) {
+    this.httpService.getZadania().subscribe(list => {
+      this.listaZadanObs.next(list);
+    });
   }
 
   dodaj(zadanie: Zadanie) {
-    this.listaZadan.push(zadanie);
-    this.listaZadanObs.next(this.listaZadan);
+    const lista = this.listaZadanObs.getValue();
+    lista.push(zadanie);
+    this.listaZadanObs.next(lista);
   }
 
   usun(zadanie: Zadanie) {
-    this.listaZadan = this.listaZadan.filter(e => e !== zadanie);
-    this.listaZadanObs.next(this.listaZadan);
+    const lista = this.listaZadanObs.getValue().filter(e => e !== zadanie);
+    this.listaZadanObs.next(lista);
   }
 
   zrobione(zadanie: Zadanie) {
-    this.zrobioneZadania.push(zadanie);
-    this.usun(zadanie);
-    this.zrobioneZadaniaObs.next(this.zrobioneZadania);
+    zadanie.end = new Date().toLocaleString();
+    zadanie.isDone = true;
+    const lista = this.listaZadanObs.getValue();
+    this.listaZadanObs.next(lista);
   }
 
   getListaZadanObs(): Observable<Array<Zadanie>> {
     return this.listaZadanObs.asObservable();
   }
 
-  getZrobioneZadaniaObs(): Observable<Array<Zadanie>> {
-    return this.zrobioneZadaniaObs.asObservable();
+  saveZadaniaInDb() {
+    this.httpService.saveZadania(this.listaZadanObs.getValue());
   }
+
 }

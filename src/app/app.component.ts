@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ZadaniaService } from './services/zadania.service';
 
 @Component({
   selector: 'app-root',
@@ -6,8 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-
-
   title = 'app';
+
+  constructor(private zadaniaService: ZadaniaService) {
+
+  }
+
+  save() {
+    this.zadaniaService.saveZadaniaInDb();
+  }
 
 }

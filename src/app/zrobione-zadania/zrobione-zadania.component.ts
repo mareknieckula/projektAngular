@@ -11,8 +11,8 @@ export class ZrobioneZadaniaComponent implements OnInit {
 
   zrobioneZadania: Array<Zadanie> = [];
   constructor(private zadaniaService: ZadaniaService) {
-    this.zadaniaService.getZrobioneZadaniaObs().subscribe((zadania: Array<Zadanie>) => {
-      this.zrobioneZadania = zadania;
+    this.zadaniaService.getListaZadanObs().subscribe((zadania: Array<Zadanie>) => {
+      this.zrobioneZadania = zadania.filter(z => z.isDone === true);
     });
   }
 

@@ -17,7 +17,7 @@ export class DodajZadanieComponent implements OnInit {
   }
 
   dodaj() {
-    const zadanie: Zadanie = ({ name: this.noweZadanie, created: new Date() });
+    const zadanie: Zadanie = ({ name: this.noweZadanie, created: new Date().toLocaleString(), isDone: false });
     this.zadaniaService.dodaj(zadanie);
     this.noweZadanie = '';
   }

@@ -13,7 +13,7 @@ export class DoZrobieniaComponent implements OnInit {
 
   constructor(private zadaniaService: ZadaniaService) {
     this.zadaniaService.getListaZadanObs().subscribe((zadania: Array<Zadanie>) => {
-      this.listaZadan = zadania.slice();
+      this.listaZadan = zadania.slice().filter(z => z.isDone === false);
     });
   }
 
@@ -24,7 +24,6 @@ export class DoZrobieniaComponent implements OnInit {
   }
 
   zrobione(zadanie: Zadanie) {
-    zadanie.end = new Date();
     this.zadaniaService.zrobione(zadanie);
   }
 
