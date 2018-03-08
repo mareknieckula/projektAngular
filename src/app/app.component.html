@@ -1,17 +1,11 @@
-<div>
-  <div class="container">
-    <app-dodaj-zadanie></app-dodaj-zadanie>
-  </div>
-
-  <div class="container">
-
-    <div>
-      <app-do-zrobienia></app-do-zrobienia>
-    </div>
-
-    <div>
-      <app-zrobione-zadania></app-zrobione-zadania>
-    </div>
-  </div>
-  <button (click)="save()" type="button" class="btn btn-info">Zapisz!</button>
+<div class="maindiv">
+<ul class="nav nav-pills justify-content-center">
+  <li class="nav-item">
+    <a class="nav-link" routerLink="doZrobienia" routerLinkActive="active">Zadania</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" routerLink="zrobioneZadania" routerLinkActive="active">Wykonane</a>
+  </li>
+</ul>
+<router-outlet></router-outlet>
 </div>

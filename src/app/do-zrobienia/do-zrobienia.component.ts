@@ -31,4 +31,8 @@ export class DoZrobieniaComponent implements OnInit {
     return this.listaZadan.length >= 5 ? 'red' : 'green';
   }
 
+  save() {
+    this.zadaniaService.saveZadaniaInDb();
+  }
+
 }

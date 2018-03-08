@@ -1,5 +1,8 @@
-<div justify-content-center>
-  <input class="form-control" type="text" placeholder="Tu wpisz zadanie..." [(ngModel)]="noweZadanie">
-  <br/>
-  <button type="button" class="btn btn-warning" (click)="dodaj()">Dodaj Zadanie</button>
+<div class="form-row align-items-center">
+  <div class="col-auto">
+    <input type="text" class="form-control mb-2" [(ngModel)]="noweZadanie">
+  </div>
+  <div class="col-auto">
+    <button type="submit" class="btn btn-primary mb-2" (click)="dodaj()">Dodaj</button>
+  </div>
 </div>

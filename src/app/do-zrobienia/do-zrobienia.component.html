@@ -1,13 +1,17 @@
-<ng-container *ngIf="listaZadan.length > 0; else brakZadan">
-  <p [ngStyle]="{color: getColor()}">Zadania do wykonania: {{listaZadan.length}}</p>
-  <ul>
-    <li appDate [date]="zadanie.created" *ngFor="let zadanie of listaZadan | sortName; let odd = odd" [ngClass]="{'odd-li': odd === true, 'last-li': listaZadan.length===1}">
-      {{zadanie.name | transformZadanie: '!'}}
-      <button type="button" class="btn btn-danger" (click)="usun(zadanie)">Usuń</button>
-      <button type="button" class="btn btn-success" (click)="zrobione(zadanie)">Zrobione!</button>
-    </li>
-  </ul>
-</ng-container>
-<ng-template #brakZadan>
-  <p>Brak zadań do wykonania!</p>
-</ng-template>
+<div class="container">
+  <app-dodaj-zadanie></app-dodaj-zadanie>
+  <ng-container *ngIf="listaZadan.length > 0; else brakZadan">
+    <p [ngStyle]="{color: getColor()}">Zadania do wykonania: {{listaZadan.length}}</p>
+    <ul>
+      <li appDate [date]="zadanie.created" *ngFor="let zadanie of listaZadan | sortName; let odd = odd" [ngClass]="{'odd-li': odd === true, 'last-li': listaZadan.length===1}">
+        {{zadanie.name | transformZadanie: '!'}}
+        <button type="button" class="btn btn-danger" (click)="usun(zadanie)">Usuń</button>
+        <button type="button" class="btn btn-success" (click)="zrobione(zadanie)">Zrobione!</button>
+      </li>
+    </ul>
+  </ng-container>
+  <ng-template #brakZadan>
+    <p>Brak zadań do wykonania!</p>
+  </ng-template>
+  <button (click)="save()" type="button" class="btn btn-warning">Zapisz w MongoDB</button>
+</div>

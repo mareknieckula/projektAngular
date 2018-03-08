@@ -14,6 +14,7 @@ import { DateDirective } from './shared/date.directive';
 import { TransformZadaniePipe } from './shared/transform-zadanie.pipe';
 import { SortNamePipe } from './shared/sort-name.pipe';
 import { HttpService } from './services/http.service';
+import { AppRoutingModule } from './app.routing.module';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { HttpService } from './services/http.service';
   imports: [
     BrowserModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    AppRoutingModule
   ],
   providers: [ZadaniaService, HttpService],
   bootstrap: [AppComponent]

@@ -9,12 +9,5 @@ import { ZadaniaService } from './services/zadania.service';
 export class AppComponent {
   title = 'app';
 
-  constructor(private zadaniaService: ZadaniaService) {
-
-  }
-
-  save() {
-    this.zadaniaService.saveZadaniaInDb();
-  }
 
 }
