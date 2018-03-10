@@ -2,10 +2,11 @@
   <form [formGroup]="addForm" (ngSubmit)="dodaj()">
     <div formArrayName="zadanieName">
       <div *ngFor="let zadanie of addForm.get('zadanieName')['controls']; let i = index">
-        <input type="text" [formControlName]="i">
+        <input type="text" class="form-control" placeholder="Wpisz treć zadania..." [formControlName]="i">
       </div>
     </div>
-    <button type="submit" [disabled]="addForm.invalid">Dodaj</button>
-    <button type="button" (click)="dodajPole()">Dodaj więcej</button>
+    <br/>
+    <button type="submit" class="btn btn-primary" [disabled]="addForm.invalid">Dodaj Zadanie</button>
+    <button type="button" class="btn btn-info" (click)="dodajPole()">Dodaj Więcej Zadań</button>
   </form>
 </div>
