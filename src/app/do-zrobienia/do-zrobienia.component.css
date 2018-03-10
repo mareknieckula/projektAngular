@@ -1,5 +1,7 @@
 li {
   background: lightblue;
+  list-style-type: none;
+  padding: 0;
   margin: 5px;
 }
 
@@ -12,4 +14,3 @@ li {
   background: lightpink;
   margin: 5px;
 }
-

@@ -15,9 +15,9 @@ export class ZadaniaService {
     });
   }
 
-  dodaj(zadanie: Zadanie) {
-    const lista = this.listaZadanObs.getValue();
-    lista.push(zadanie);
+  dodaj(zadanie: Array<Zadanie>) {
+    const lista = this.listaZadanObs.getValue().concat(zadanie);
+    // lista.push(zadanie);
     this.listaZadanObs.next(lista);
   }
 

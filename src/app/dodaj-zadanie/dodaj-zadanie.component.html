@@ -1,8 +1,11 @@
-<div class="form-row align-items-center">
-  <div class="col-auto">
-    <input type="text" class="form-control mb-2" [(ngModel)]="noweZadanie">
-  </div>
-  <div class="col-auto">
-    <button type="submit" class="btn btn-primary mb-2" (click)="dodaj()">Dodaj</button>
-  </div>
+<div>
+  <form [formGroup]="addForm" (ngSubmit)="dodaj()">
+    <div formArrayName="zadanieName">
+      <div *ngFor="let zadanie of addForm.get('zadanieName')['controls']; let i = index">
+        <input type="text" [formControlName]="i">
+      </div>
+    </div>
+    <button type="submit" [disabled]="addForm.invalid">Dodaj</button>
+    <button type="button" (click)="dodajPole()">Dodaj więcej</button>
+  </form>
 </div>
